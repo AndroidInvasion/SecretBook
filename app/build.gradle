@@ -16,6 +16,7 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
 
 repositories {
@@ -41,19 +42,34 @@ android {
     }
 }
 
+ext {
+    daggerVersion = '2.14.1'
+    moxyVersion = '1.5.3'
+    rxjavaVersion = '2.0.2'
+    supportVersion = '26.1.0'
+    crashalyticsVersion = '2.9.1'
+    constrainLayoutVersion = '1.0.2'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:support-vector-drawable:26.1.0'
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constrainLayoutVersion"
+    implementation "com.android.support:support-vector-drawable:$supportVersion"
 
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
+    implementation "com.arello-mobile:moxy:$moxyVersion"
+    implementation "com.arello-mobile:moxy-app-compat:$moxyVersion"
+    kapt "com.arello-mobile:moxy-compiler:$moxyVersion"
+
+    implementation "io.reactivex.rxjava2:rxandroid:$rxjavaVersion"
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+
+    implementation("com.crashlytics.sdk.android:crashlytics:$crashalyticsVersion@aar") {
         transitive = true
     }
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
