@@ -38,4 +38,4 @@ ADD deploy $WORK/deploy
 ADD build.gradle $WORK/build.gradle
 ADD gradle.properties $WORK/gradle.properties
 ADD settings.gradle $WORK/settings.gradle
-CMD cd $WORK && gradle assembleRelease uploadReleaseToHockeyApp
+CMD cd $WORK && gradle uploadReleaseToHockeyApp
