@@ -1,4 +1,4 @@
-language: android
+language: default
 
 services:
 - docker
@@ -10,5 +10,6 @@ before_script:
 script:
 - docker build -t secretbookimage .
 - echo $TRAVIS_BUILD_NUMBER
+- docker --help
 - docker run --env TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER --env TRAVIS_COMMIT_MESSAGE=$TRAVIS_COMMIT_MESSAGE secretbookimage env
 - docker run --env TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER --env TRAVIS_COMMIT_MESSAGE=$TRAVIS_COMMIT_MESSAGE secretbookimage
