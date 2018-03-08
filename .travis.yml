@@ -5,7 +5,7 @@ services:
 
 before_script:
 - openssl aes-256-cbc -K $encrypted_8d441ecbf331_key -iv $encrypted_8d441ecbf331_iv -in ./deploy/secret.tar.enc -out ./deploy/secret.tar -d
-- cd ./deploy && tar xvf secret.tar && cd ../ && mv ./deploy/unsecret/fabric.properties ./app/fabric.properties
+- cd ./deploy && tar xvf secret.tar && cd ../
 
 script:
 - docker build -t secretbookimage .
