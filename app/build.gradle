@@ -34,14 +34,30 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
+    signingConfigs {
+        release {
+            def keystorePropertiesFile = rootProject.file("deploy/unsecret/secret.properties")
+            def keystoreProperties = new Properties()
+            keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+            // this keystore is located at module level
+            storeFile file("../deploy/unsecret/deploy.jks")
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
         }
     }
 }
-
 ext {
     daggerVersion = '2.14.1'
     moxyVersion = '1.5.3'
