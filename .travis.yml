@@ -1,13 +1,12 @@
 language: android
 
 services:
-  - docker
+- docker
 
 before_script:
-  - openssl aes-256-cbc -K $encrypted_8d441ecbf331_key -iv $encrypted_8d441ecbf331_iv -in ./deploy/secret/deploy.jks.enc -out ./deploy/unsecret/deploy.jks -d
-  - openssl aes-256-cbc -K $encrypted_8d441ecbf331_key -iv $encrypted_8d441ecbf331_iv -in ./deploy/secret/secret.properties.enc -out ./deploy/unsecret/secret.properties -d
-  - openssl aes-256-cbc -K $encrypted_8d441ecbf331_key -iv $encrypted_8d441ecbf331_iv -in ./deploy/secret/fabric.properties.enc -out ./app/fabric.properties -d
+- openssl aes-256-cbc -K $encrypted_8d441ecbf331_key -iv $encrypted_8d441ecbf331_iv -in ./deploy/secret.tar.enc -out ./deploy/secret.tar -d
+- cd ./deploy && tar xvf secret.tar
 
 script:
-  - docker build -t secretbookimage .
-  - docker run -it --rm secretbookimage
+- docker build -t secretbookimage .
+- docker run -it --rm secretbookimage
