@@ -38,4 +38,9 @@ ADD deploy $WORK/deploy
 ADD build.gradle $WORK/build.gradle
 ADD gradle.properties $WORK/gradle.properties
 ADD settings.gradle $WORK/settings.gradle
+
+CMD echo '================================'
+CMD echo $TRAVIS_BUILD_NUMBER
+CMD echo $TRAVIS_COMMIT_MESSAGE
+CMD echo '================================'
 CMD cd $WORK && gradle uploadReleaseToHockeyApp
