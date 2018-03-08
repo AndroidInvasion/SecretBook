@@ -8,3 +8,4 @@
 .externalNativeBuild
 
 Gemfile.lock
+release/
