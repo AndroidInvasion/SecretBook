@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SecretBook.iml" filepath="$PROJECT_DIR$/SecretBook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SecretBookFix2.iml" filepath="$PROJECT_DIR$/SecretBookFix2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

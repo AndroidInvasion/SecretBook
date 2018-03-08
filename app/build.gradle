@@ -59,6 +59,8 @@ android {
     }
 }
 ext {
+    betaDistributionEmails="nikita@kulikof.ru"
+
     daggerVersion = '2.14.1'
     moxyVersion = '1.5.3'
     rxjavaVersion = '2.0.2'
