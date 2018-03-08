@@ -26,7 +26,7 @@ android {
         applicationId "ru.androidinvasion.secretbook"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode System.getenv('TRAVIS_BUILD_NUMBER') ?: 1
+        versionCode System.getenv('TRAVIS_BUILD_NUMBER') as Integer ?: 1
         versionName "1.0." + versionCode
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
