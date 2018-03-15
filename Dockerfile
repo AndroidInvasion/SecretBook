@@ -39,8 +39,11 @@ ADD build.gradle $WORK/build.gradle
 ADD gradle.properties $WORK/gradle.properties
 ADD settings.gradle $WORK/settings.gradle
 
-CMD echo '================================'
-CMD echo $TRAVIS_BUILD_NUMBER
-CMD echo $TRAVIS_COMMIT_MESSAGE
-CMD echo '================================'
-CMD cd $WORK && gradle uploadReleaseToHockeyApp
+CMD echo '================================' && \
+ echo $TRAVIS_BUILD_NUMBER && \
+ echo $TRAVIS_COMMIT_MESSAGE && \
+ echo '================================' && \
+ cd $WORK && gradle uploadReleaseToHockeyApp detektCheck lint && \
+ mv $WORK/app/build/reports/* /dockerOut/lint/
+ mv $WORK/app/release/app-release.apk /dockerOut/
+ mv $WORK/detektReport/* /dockerOut/detekt/

@@ -9,7 +9,8 @@ before_script:
 
 script:
 - docker build -t secretbookimage .
-- docker run --env TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER --env TRAVIS_COMMIT_MESSAGE="$TRAVIS_COMMIT_MESSAGE" secretbookimage
+- docker run --env TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER --env TRAVIS_COMMIT_MESSAGE="$TRAVIS_COMMIT_MESSAGE" -v $TRAVIS_BUILD_DIR/dockerOut:/dockerOut:rw secretbookimage
+- ls $TRAVIS_BUILD_DIR/dockerOut
 
 branches:
   only:
