@@ -9,7 +9,10 @@ services:
 
 before_script:
 - openssl aes-256-cbc -K $encrypted_2dd5fc134a5e_key -iv $encrypted_2dd5fc134a5e_iv -in ./deploy/secret.tar.enc -out ./deploy/secret.tar -d
-- cd ./deploy && tar xvf secret.tar && ssh-add unsecret/id_rsa && cd ../
+- cd ./deploy && tar xvf secret.tar && cd ../
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deploy/unsecret/id_rsa
+- ssh-add ./deploy/unsecret/id_rsa
 
 script:
 - docker build -t secretbookimage .
