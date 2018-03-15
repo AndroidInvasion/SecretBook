@@ -1,0 +1,5 @@
+language: default
+
+branches:
+  except:
+    - gh-pages
