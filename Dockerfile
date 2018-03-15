@@ -27,7 +27,7 @@ WORKDIR WORK
 
 ADD . $WORK
 
-CMD mkdir /dockerOut/ && mkdir /dockerOut/detekt && mkdir /dockerOut/lint && \
+CMD mkdir /dockerOut/detekt && mkdir /dockerOut/lint && \
  echo '================================' && \
  echo $TRAVIS_BUILD_NUMBER && \
  echo $TRAVIS_COMMIT_MESSAGE && \
