@@ -2,7 +2,7 @@
 
 SOURCE_DIR=$1
 TARGET_BRANCH=deployreport
-REPO=`git@github.com:AndroidInvasion/SecretBook.git`
+REPO=git@github.com:AndroidInvasion/SecretBook.git
 
 git clone $REPO pages && cd pages
 git checkout $TARGET_BRANCH
