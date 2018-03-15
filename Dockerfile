@@ -44,6 +44,6 @@ CMD echo '================================' && \
  echo $TRAVIS_COMMIT_MESSAGE && \
  echo '================================' && \
  cd $WORK && gradle uploadReleaseToHockeyApp detektCheck lint && \
- mv $WORK/app/build/reports/* /dockerOut/lint/
- mv $WORK/app/release/app-release.apk /dockerOut/
+ mv $WORK/app/build/reports/* /dockerOut/lint/ && \
+ mv $WORK/app/release/app-release.apk /dockerOut/ && \
  mv $WORK/detektReport/* /dockerOut/detekt/
