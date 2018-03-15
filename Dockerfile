@@ -37,6 +37,7 @@ ADD app $WORK/app
 ADD deploy $WORK/deploy
 ADD build.gradle $WORK/build.gradle
 ADD gradle.properties $WORK/gradle.properties
+ADD detekt.yml $WORK/detekt.yml
 ADD settings.gradle $WORK/settings.gradle
 
 CMD echo '================================' && \
