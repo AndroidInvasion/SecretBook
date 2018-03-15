@@ -14,7 +14,7 @@ before_script:
 script:
 - docker build -t secretbookimage .
 - ls ~/.gradle
-- docker run --env TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER --env TRAVIS_COMMIT_MESSAGE="$TRAVIS_COMMIT_MESSAGE" -v $TRAVIS_BUILD_DIR/dockerOut:/dockerOut:rw -v ~/.gradle:/opt/gradle:rw secretbookimage
+- docker run --env TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER --env TRAVIS_COMMIT_MESSAGE="$TRAVIS_COMMIT_MESSAGE" -v $TRAVIS_BUILD_DIR/dockerOut:/dockerOut:rw -v ~/.gradle:/root/.gradle/:rw secretbookimage
 - ls $TRAVIS_BUILD_DIR/dockerOut
 - ls ~/.gradle
 
