@@ -11,6 +11,7 @@ git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 BUILDFOLDER=build_$TRAVIS_BUILD_NUMBER
+mkdir ./$BUILDFOLDER
 cp ${SOURCE_DIR}/* ./$BUILDFOLDER/
 
 rm index.html
