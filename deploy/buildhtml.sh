@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SOURCE_DIR=$1
-TARGET_BRANCH=deployreport
+TARGET_BRANCH=gh-pages
 REPO=git@github.com:AndroidInvasion/SecretBook.git
 
 git clone $REPO pages && cd pages
@@ -15,7 +15,7 @@ mkdir ./$BUILDFOLDER
 cp -r ${SOURCE_DIR}/* ./$BUILDFOLDER/
 
 rm index.html
-tree -a -I '.git' -H baseHREF >> index.html
+tree -a -I '.git' -H ./ >> index.html
 
 git add .
 git commit -m "Report deploy: ${TRAVIS_BUILD_NUMBER}"
