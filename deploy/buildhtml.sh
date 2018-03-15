@@ -16,3 +16,7 @@ cp ${SOURCE_DIR}/* ./$BUILDFOLDER/
 rm index.html
 tree -a -I '.git' -H baseHREF >> index.html
 
+git add .
+git commit -m "Report deploy: ${TRAVIS_BUILD_NUMBER}"
+git push origin $TARGET_BRANCH
+
