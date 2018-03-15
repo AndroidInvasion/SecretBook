@@ -1,16 +1,27 @@
 language: default
 
+cache:
+    directories:
+     - /home/travis/.gradle/
+
 services:
 - docker
 
 before_script:
-- openssl aes-256-cbc -K $encrypted_8d441ecbf331_key -iv $encrypted_8d441ecbf331_iv -in ./deploy/secret.tar.enc -out ./deploy/secret.tar -d
+- sudo apt-get install -qqy tree
+- openssl aes-256-cbc -K $encrypted_2dd5fc134a5e_key -iv $encrypted_2dd5fc134a5e_iv -in ./deploy/secret.tar.enc -out ./deploy/secret.tar -d
 - cd ./deploy && tar xvf secret.tar && cd ../
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deploy/unsecret/id_rsa
+- ssh-add ./deploy/unsecret/id_rsa
 
 script:
 - docker build -t secretbookimage .
-- docker run --env TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER --env TRAVIS_COMMIT_MESSAGE="$TRAVIS_COMMIT_MESSAGE" secretbookimage
+- docker run --env TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER --env TRAVIS_COMMIT_MESSAGE="$TRAVIS_COMMIT_MESSAGE" -v $TRAVIS_BUILD_DIR/dockerOut:/dockerOut:rw -v ~/.gradle:/root/.gradle/:rw secretbookimage
+- ls $TRAVIS_BUILD_DIR/dockerOut
+- cd ./deploy/ && ./buildhtml.sh $TRAVIS_BUILD_DIR/dockerOut
 
 branches:
   only:
     - dev
+    - deploy

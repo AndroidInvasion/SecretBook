@@ -19,28 +19,20 @@ RUN mkdir "$ANDROID_HOME" .android \
     && rm sdk.zip \
     && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 
-ENV GRADLE_VERSION 4.1
-RUN cd /opt && \
-    wget -q https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip && \
-    unzip -qq gradle*.zip && \
-    ls -d */ | sed 's/\/*$//g' | xargs -I{} mv {} gradle && \
-    rm gradle*.zip
-
-ENV GRADLE_HOME /opt/gradle
-ENV PATH ${PATH}:${GRADLE_HOME}/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin
+ENV PATH ${PATH}:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin
 
 ENV WORK /application
 RUN mkdir $WORK
 WORKDIR WORK
 
-ADD app $WORK/app
-ADD deploy $WORK/deploy
-ADD build.gradle $WORK/build.gradle
-ADD gradle.properties $WORK/gradle.properties
-ADD settings.gradle $WORK/settings.gradle
+ADD . $WORK
 
-CMD echo '================================'
-CMD echo $TRAVIS_BUILD_NUMBER
-CMD echo $TRAVIS_COMMIT_MESSAGE
-CMD echo '================================'
-CMD cd $WORK && gradle uploadReleaseToHockeyApp
+CMD mkdir /dockerOut/detekt && mkdir /dockerOut/lint && \
+ echo '================================' && \
+ echo $TRAVIS_BUILD_NUMBER && \
+ echo $TRAVIS_COMMIT_MESSAGE && \
+ echo '================================' && \
+ cd $WORK && ./gradlew uploadReleaseToHockeyApp detektCheck lint && \
+ mv $WORK/app/build/reports/* /dockerOut/lint/ && \
+ mv $WORK/app/build/outputs/apk/release/app-release.apk /dockerOut/ && \
+ mv $WORK/detektReport/* /dockerOut/detekt/

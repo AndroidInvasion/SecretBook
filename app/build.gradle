@@ -100,3 +100,17 @@ hockeyapp {
     notesType = 1
     notes = System.getenv('TRAVIS_COMMIT_MESSAGE') ?: new File(file('../README.md').absolutePath).getText('UTF-8')
 }
+
+android {
+    lintOptions {
+        abortOnError true
+        warningsAsErrors false
+        quiet false
+        htmlReport true
+        xmlReport false
+        textReport true
+        explainIssues true
+        ignoreWarnings false
+        lintConfig file("lint.xml")
+    }
+}
