@@ -34,5 +34,5 @@ CMD mkdir /dockerOut/detekt && mkdir /dockerOut/lint && \
  echo '================================' && \
  cd $WORK && ./gradlew uploadReleaseToHockeyApp detektCheck lint && \
  mv $WORK/app/build/reports/* /dockerOut/lint/ && \
- mv $WORK/app/release/app-release.apk /dockerOut/ && \
+ mv $WORK/app/build/outputs/apk/release/app-release.apk /dockerOut/ && \
  mv $WORK/detektReport/* /dockerOut/detekt/
