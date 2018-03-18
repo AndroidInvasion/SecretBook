@@ -22,5 +22,6 @@ class AppModule(val context: Context) {
 
     @Singleton
     @Provides
-    fun provideSharedPreference(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    fun provideSharedPreference(context: Context): SharedPreferences
+            = PreferenceManager.getDefaultSharedPreferences(context)
 }

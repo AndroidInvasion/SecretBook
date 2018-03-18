@@ -20,8 +20,8 @@ test-pattern: # Configure exclusions for test sources
     - 'TooManyFunctions'
 
 build:
-  warningThreshold: -1 #TODO
-  failThreshold: -1 #TODO
+  warningThreshold: 1
+  failThreshold: 1
   weights:
     complexity: 2
     formatting: 1
