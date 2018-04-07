@@ -16,7 +16,7 @@ import ru.androidinvasion.secretbook.repositories.auth.IAuthRepository
 
 @Module
 @SplashscreenScope
-class AuthModule {
+class SplashscreenModule {
     @Provides
     @SplashscreenScope
     fun provideRepository(sharedPreferences: SharedPreferences): IAuthRepository {

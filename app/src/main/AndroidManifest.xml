@@ -23,7 +23,7 @@
             android:name="io.fabric.ApiKey"
             android:value="6773afb1bd21ddaca3ade4881632c0ef87978286" />
 
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".view.splashscreen.ui.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

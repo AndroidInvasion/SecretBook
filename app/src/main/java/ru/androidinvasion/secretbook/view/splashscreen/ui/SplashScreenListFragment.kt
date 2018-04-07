@@ -1,4 +1,4 @@
-package ru.androidinvasion.secretbook.splashscreen
+package ru.androidinvasion.secretbook.view.splashscreen.ui
 
 import android.os.Bundle
 import android.support.v4.app.ListFragment

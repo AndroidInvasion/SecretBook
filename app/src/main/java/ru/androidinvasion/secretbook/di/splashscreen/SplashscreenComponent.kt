@@ -1,7 +1,7 @@
 package ru.androidinvasion.secretbook.di.auth
 
 import dagger.Subcomponent
-import ru.androidinvasion.secretbook.view.auth.presenter.AuthPresenter
+import ru.androidinvasion.secretbook.view.splashscreen.presenter.SplashscreenPresenter
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -11,6 +11,6 @@ import ru.androidinvasion.secretbook.view.auth.presenter.AuthPresenter
 
 @Subcomponent(modules = [SplashscreenModule::class])
 @SplashscreenScope
-interface AuthComponent {
-    fun inject(presenter: AuthPresenter)
+interface SplashscreenComponent {
+    fun inject(presenter: SplashscreenPresenter)
 }
