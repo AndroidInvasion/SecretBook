@@ -21,8 +21,7 @@
             android:value="6773afb1bd21ddaca3ade4881632c0ef87978286" />
 
         <activity
-            android:name=".view.splashscreen.ui.IntroActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".view.splashscreen.ui.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@android:color/background_light"
     android:gravity="center"
     android:orientation="vertical"
     tools:context="ru.androidinvasion.secretbook.view.splashscreen.ui.IntroActivity">
@@ -26,7 +26,8 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/bottomline"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
 
         <Button
             android:id="@+id/btn_skip"
