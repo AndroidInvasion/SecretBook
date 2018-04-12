@@ -5,9 +5,10 @@ import android.support.v4.app.ListFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_pager_list.*
 import ru.androidinvasion.secretbook.R
 
-class SplashScreenListFragment: ListFragment() {
+class SplashScreenListFragment : ListFragment() {
     private var position: Int? = null
 
     companion object {
@@ -26,8 +27,12 @@ class SplashScreenListFragment: ListFragment() {
         position = arguments?.getInt("position")
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater!!.inflate(R.layout.fragment_pager_list, container, false)
-        return v
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_pager_list, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        title.text = (position ?: -1).toString()
     }
 }

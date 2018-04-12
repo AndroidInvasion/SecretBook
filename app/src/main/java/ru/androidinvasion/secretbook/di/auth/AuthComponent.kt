@@ -9,8 +9,8 @@ import ru.androidinvasion.secretbook.view.auth.presenter.AuthPresenter
  * @date 06.03.18
  */
 
-@Subcomponent(modules = [SplashscreenModule::class])
-@SplashscreenScope
+@Subcomponent(modules = [AuthModule::class])
+@AuthScope
 interface AuthComponent {
     fun inject(presenter: AuthPresenter)
 }

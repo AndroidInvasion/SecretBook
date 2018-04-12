@@ -1,4 +1,4 @@
-package ru.androidinvasion.secretbook.di.auth
+package ru.androidinvasion.secretbook.di.splashscreen
 
 import dagger.Subcomponent
 import ru.androidinvasion.secretbook.view.splashscreen.presenter.SplashscreenPresenter

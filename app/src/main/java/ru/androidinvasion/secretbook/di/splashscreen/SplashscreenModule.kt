@@ -1,12 +1,11 @@
-package ru.androidinvasion.secretbook.di.auth
+package ru.androidinvasion.secretbook.di.splashscreen
 
-import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
-import ru.androidinvasion.secretbook.interactor.auth.AuthInteractor
-import ru.androidinvasion.secretbook.interactor.auth.IAuthInteractor
-import ru.androidinvasion.secretbook.repositories.auth.AuthRepository
-import ru.androidinvasion.secretbook.repositories.auth.IAuthRepository
+import ru.androidinvasion.secretbook.interactor.splashscreen.ISplashscreenInteractor
+import ru.androidinvasion.secretbook.interactor.splashscreen.SplashscreenInteractor
+import ru.androidinvasion.secretbook.repositories.splashscreen.ISplashscreenRepository
+import ru.androidinvasion.secretbook.repositories.splashscreen.SplashscreenRepository
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -19,14 +18,14 @@ import ru.androidinvasion.secretbook.repositories.auth.IAuthRepository
 class SplashscreenModule {
     @Provides
     @SplashscreenScope
-    fun provideRepository(sharedPreferences: SharedPreferences): IAuthRepository {
-        return AuthRepository(sharedPreferences)
+    fun provideRepository(): ISplashscreenRepository {
+        return SplashscreenRepository()
     }
 
 
     @Provides
     @SplashscreenScope
-    fun provideInteractor(authRepository: IAuthRepository): IAuthInteractor {
-        return AuthInteractor(authRepository)
+    fun provideInteractor(splashscreenRepository: ISplashscreenRepository): ISplashscreenInteractor {
+        return SplashscreenInteractor(splashscreenRepository)
     }
 }

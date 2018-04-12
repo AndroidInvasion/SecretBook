@@ -25,6 +25,5 @@ class SplashScreenActivity : MvpAppCompatActivity(), ISplashscreenView {
 
         mPager = findViewById(R.id.splash_screen_view_pagerager)
         mPager?.adapter = mAdapter
-        presenter.loadUpdates()
     }
 }

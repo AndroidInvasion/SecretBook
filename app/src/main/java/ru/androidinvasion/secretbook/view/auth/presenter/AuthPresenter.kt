@@ -7,7 +7,6 @@ import io.reactivex.disposables.CompositeDisposable
 import ru.androidinvasion.secretbook.App
 import ru.androidinvasion.secretbook.R
 import ru.androidinvasion.secretbook.di.auth.AuthModule
-import ru.androidinvasion.secretbook.di.auth.SplashscreenModule
 import ru.androidinvasion.secretbook.interactor.auth.IAuthInteractor
 import ru.androidinvasion.secretbook.utils.Constants
 import ru.androidinvasion.secretbook.view.auth.ui.IAuthView

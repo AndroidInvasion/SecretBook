@@ -15,17 +15,17 @@ import ru.androidinvasion.secretbook.repositories.auth.IAuthRepository
  */
 
 @Module
-@SplashscreenScope
+@AuthScope
 class AuthModule {
     @Provides
-    @SplashscreenScope
+    @AuthScope
     fun provideRepository(sharedPreferences: SharedPreferences): IAuthRepository {
         return AuthRepository(sharedPreferences)
     }
 
 
     @Provides
-    @SplashscreenScope
+    @AuthScope
     fun provideInteractor(authRepository: IAuthRepository): IAuthInteractor {
         return AuthInteractor(authRepository)
     }

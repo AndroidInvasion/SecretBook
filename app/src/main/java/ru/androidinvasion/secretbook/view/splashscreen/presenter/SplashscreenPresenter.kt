@@ -2,9 +2,8 @@ package ru.androidinvasion.secretbook.view.splashscreen.presenter
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import io.reactivex.disposables.CompositeDisposable
 import ru.androidinvasion.secretbook.App
-import ru.androidinvasion.secretbook.di.auth.SplashscreenModule
+import ru.androidinvasion.secretbook.di.splashscreen.SplashscreenModule
 import ru.androidinvasion.secretbook.interactor.splashscreen.ISplashscreenInteractor
 import ru.androidinvasion.secretbook.view.splashscreen.ui.ISplashscreenView
 import javax.inject.Inject
