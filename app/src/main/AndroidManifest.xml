@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" />
-        <activity
             android:name=".view.auth.ui.AuthActivity"
             android:label="@string/auth_activity_title" />
 
@@ -23,7 +20,9 @@
             android:name="io.fabric.ApiKey"
             android:value="6773afb1bd21ddaca3ade4881632c0ef87978286" />
 
-        <activity android:name=".view.splashscreen.ui.SplashScreenActivity">
+        <activity
+            android:name=".view.splashscreen.ui.IntroActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

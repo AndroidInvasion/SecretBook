@@ -3,8 +3,6 @@ package ru.androidinvasion.secretbook.di.app
 import dagger.Component
 import ru.androidinvasion.secretbook.di.auth.AuthComponent
 import ru.androidinvasion.secretbook.di.auth.AuthModule
-import ru.androidinvasion.secretbook.di.splashscreen.SplashscreenComponent
-import ru.androidinvasion.secretbook.di.splashscreen.SplashscreenModule
 import javax.inject.Singleton
 
 /**
@@ -16,5 +14,4 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
     fun plus(module: AuthModule): AuthComponent
-    fun plus(module: SplashscreenModule): SplashscreenComponent
 }

@@ -4,18 +4,14 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 
-class SplashScreenPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
-    private val screenLists = Array(NUM_ITEMS, { i -> SplashScreenListFragment.newInstance(i) })
-
-    companion object {
-        const val NUM_ITEMS = 3
-    }
+class IntroAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    private val screenLists = Array(count, { i -> IntroFragment.newInstance(IntroEnum.values()[i]) })
 
     override fun getItem(position: Int): Fragment {
         return screenLists[position]
     }
 
     override fun getCount(): Int {
-        return NUM_ITEMS
+        return IntroEnum.values().size
     }
 }

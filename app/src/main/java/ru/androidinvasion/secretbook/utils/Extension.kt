@@ -1,6 +1,7 @@
 package ru.androidinvasion.secretbook.utils
 
 import android.content.Context
+import android.content.res.Resources
 import android.widget.Toast
 
 /**
@@ -16,3 +17,8 @@ fun Context.toast(resId: Int) {
 fun Context.toast(text: String) {
     Toast.makeText(this, text, Toast.LENGTH_LONG).show()
 }
+
+val Float.dp: Float
+    get() = (this / Resources.getSystem().displayMetrics.density)
+val Float.px: Float
+    get() = (this * Resources.getSystem().displayMetrics.density)
