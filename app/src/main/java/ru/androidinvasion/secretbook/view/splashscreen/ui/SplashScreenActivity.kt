@@ -22,9 +22,9 @@ class SplashScreenActivity : Activity() {
             val intent = Intent(this, IntroActivity::class.java)
             intent.flags = FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
-            //TODO: preference.edit().putBoolean("firstrun", false).apply()
+            //TODO(preference.edit().putBoolean("firstrun", false).apply())
         } else {
-            //TODO: do nothing, lol
+            //TODO(do nothing, lol)
         }
     }
 
