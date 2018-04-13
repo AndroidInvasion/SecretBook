@@ -16,17 +16,22 @@
             android:name=".view.auth.ui.AuthActivity"
             android:label="@string/auth_activity_title" />
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="6773afb1bd21ddaca3ade4881632c0ef87978286" />
-
-        <activity
-            android:name=".view.splashscreen.ui.IntroActivity">
+        <activity android:name=".view.splashscreen.ui.SplashScreenActivity"
+            android:theme="@style/AppTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="6773afb1bd21ddaca3ade4881632c0ef87978286" />
+
+        <activity
+            android:name=".view.intro.ui.IntroActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

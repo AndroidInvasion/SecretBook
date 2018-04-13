@@ -1,4 +1,4 @@
-package ru.androidinvasion.secretbook.view.splashscreen.ui
+package ru.androidinvasion.secretbook.view.intro.ui
 
 import ru.androidinvasion.secretbook.R
 
