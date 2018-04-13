@@ -16,6 +16,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:inputType="text"
             android:id="@+id/editTextLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,15 +1,11 @@
 buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
+        mavenCentral()
     }
 
     dependencies {
-        // These docs use an open ended version so that our plugin
-        // can be updated quickly in response to Android tooling updates
-
-        // We recommend changing it to the latest version from our changelog:
-        // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
-        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'io.fabric.tools:gradle:1.25.2'
     }
 }
 
@@ -17,6 +13,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'de.felixschulze.gradle.hockeyapp'
 apply plugin: 'io.fabric'
 
 repositories {
@@ -29,20 +26,40 @@ android {
         applicationId "ru.androidinvasion.secretbook"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode System.getenv('TRAVIS_BUILD_NUMBER') as Integer ?: 1
+        versionName "1.0." + versionCode
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
+    signingConfigs {
+        release {
+            def keystorePropertiesFile = rootProject.file("deploy/unsecret/secret.properties")
+            def keystoreProperties = new Properties()
+            keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+            // this keystore is located at module level
+            storeFile file("../deploy/unsecret/deploy.jks")
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
         }
     }
 }
 
+
 ext {
+    betaDistributionEmails = "nikita@kulikof.ru"
+
     daggerVersion = '2.14.1'
     moxyVersion = '1.5.3'
     rxjavaVersion = '2.0.2'
@@ -69,4 +86,28 @@ dependencies {
         transitive = true
     }
     implementation 'me.relex:circleindicator:1.2.2@aar'
+}
+
+hockeyapp {
+    def keystorePropertiesFile = rootProject.file("deploy/unsecret/secret.properties")
+    def keystoreProperties = new Properties()
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+    apiToken = keystoreProperties['apiTokenHockey']
+    notesType = 1
+    notes = System.getenv('TRAVIS_COMMIT_MESSAGE') ?: new File(file('../README.md').absolutePath).getText('UTF-8')
+}
+
+android {
+    lintOptions {
+        abortOnError true
+        warningsAsErrors false
+        quiet false
+        htmlReport true
+        xmlReport false
+        textReport true
+        explainIssues true
+        ignoreWarnings false
+        lintConfig file("lint.xml")
+    }
 }

@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import ru.androidinvasion.secretbook.data.auth.UserModel
+import java.util.concurrent.TimeUnit
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -26,7 +27,7 @@ class AuthRepository(private val sharedPreferences: SharedPreferences) : IAuthRe
 
     override fun login(login: String, password: String): Single<UserModel> {
         return Single.fromCallable {
-            Thread.sleep(1000)
+            Thread.sleep(TimeUnit.SECONDS.toMillis(1))
             return@fromCallable UserModel("TestUser", "example@example.com")
         } // Эмуляция запроса с сети
                 .subscribeOn(Schedulers.io())
