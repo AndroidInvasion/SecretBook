@@ -1,3 +1,0 @@
-EmptyClassBlock - [UserModel] at app/src/main/java/ru/androidinvasion/secretbook/data/auth/UserModel.kt:3:1 - Signature=UserModel.kt$UserModel
-MagicNumber - [<anonymous>] at app/src/main/java/ru/androidinvasion/secretbook/repositories/auth/AuthRepository.kt:29:26 - Signature=AuthRepository.kt$AuthRepository$1000
-MaxLineLength - [AppModule.kt] at app/src/main/java/ru/androidinvasion/secretbook/di/app/AppModule.kt:25:126 - Signature=AppModule.kt$ru.androidinvasion.secretbook.di.app.AppModule.kt
