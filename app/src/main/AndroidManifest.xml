@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ru.androidinvasion.secretbook">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -11,17 +13,16 @@
         android:fullBackupContent="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" />
-
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".view.auth.ui.AuthActivity"
-            android:label="@string/auth_activity_title">
+            android:label="@string/auth_activity_title" />
+
+        <activity android:name=".view.splashscreen.ui.SplashScreenActivity"
+            android:theme="@style/AppTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,8 +30,11 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="6773afb1bd21ddaca3ade4881632c0ef87978286" />
-    </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+        <activity
+            android:name=".view.intro.ui.IntroActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+    </application>
 
 </manifest>

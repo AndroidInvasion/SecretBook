@@ -16,11 +16,12 @@
         android:orientation="vertical">
 
         <EditText
-            android:inputType="text"
             android:id="@+id/editTextLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:inputType="text"
+            tools:ignore="LabelFor" />
 
         <TextView
             android:id="@+id/errorLoginText"
@@ -46,7 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            tools:ignore="LabelFor" />
 
         <TextView
             android:id="@+id/errorPasswordText"
