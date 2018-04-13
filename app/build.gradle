@@ -21,11 +21,11 @@ repositories {
 }
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         applicationId "ru.androidinvasion.secretbook"
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode System.getenv('TRAVIS_BUILD_NUMBER') as Integer ?: 1
         versionName "1.0." + versionCode
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -34,15 +34,20 @@ android {
 
     signingConfigs {
         release {
-            def keystorePropertiesFile = rootProject.file("deploy/unsecret/secret.properties")
-            def keystoreProperties = new Properties()
-            keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+            try {
+                def keystorePropertiesFile = rootProject.file("deploy/unsecret/secret.properties")
+                def keystoreProperties = new Properties()
+                keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
-            // this keystore is located at module level
-            storeFile file("../deploy/unsecret/deploy.jks")
-            storePassword keystoreProperties['storePassword']
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
+                // this keystore is located at module level
+                storeFile file("../deploy/unsecret/deploy.jks")
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+
+                keyPassword keystoreProperties['keyPassword']
+            } catch (FileNotFoundException ignored) {
+                logger.warn('Not found secret file with keys! Build signing release is disabled')
+            }
         }
     }
 
@@ -63,9 +68,9 @@ ext {
     daggerVersion = '2.14.1'
     moxyVersion = '1.5.3'
     rxjavaVersion = '2.0.2'
-    supportVersion = '26.1.0'
+    supportVersion = '27.1.1'
     crashalyticsVersion = '2.9.1'
-    constrainLayoutVersion = '1.0.2'
+    constrainLayoutVersion = '1.1.0'
 }
 
 dependencies {
@@ -89,13 +94,17 @@ dependencies {
 }
 
 hockeyapp {
-    def keystorePropertiesFile = rootProject.file("deploy/unsecret/secret.properties")
-    def keystoreProperties = new Properties()
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    try {
+        def keystorePropertiesFile = rootProject.file("deploy/unsecret/secret.properties")
+        def keystoreProperties = new Properties()
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
-    apiToken = keystoreProperties['apiTokenHockey']
-    notesType = 1
-    notes = System.getenv('TRAVIS_COMMIT_MESSAGE') ?: new File(file('../README.md').absolutePath).getText('UTF-8')
+        apiToken = keystoreProperties['apiTokenHockey']
+        notesType = 1
+        notes = System.getenv('TRAVIS_COMMIT_MESSAGE') ?: new File(file('../README.md').absolutePath).getText('UTF-8')
+    } catch (FileNotFoundException ignored) {
+        logger.warn('Not found secret file with keys! Deploy is disabled.')
+    }
 }
 
 android {
@@ -104,6 +113,7 @@ android {
         warningsAsErrors false
         quiet false
         htmlReport true
+        disable 'UnusedResources'
         xmlReport false
         textReport true
         explainIssues true

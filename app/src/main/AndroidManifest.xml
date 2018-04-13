@@ -13,7 +13,8 @@
         android:fullBackupContent="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".view.auth.ui.AuthActivity"
             android:label="@string/auth_activity_title" />
