@@ -8,8 +8,15 @@ import com.igalata.bubblepicker.adapter.BubblePickerAdapter
 import com.igalata.bubblepicker.model.BubbleGradient
 import com.igalata.bubblepicker.model.PickerItem
 import kotlinx.android.synthetic.main.activity_genres_screen.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import ru.androidinvasion.secretbook.App
 import ru.androidinvasion.secretbook.R
+import ru.androidinvasion.secretbook.data.genresscreen.Genre
 import ru.androidinvasion.secretbook.utils.toast
+
+
 
 /**
  * Created by egor on 15.04.18.
@@ -17,15 +24,29 @@ import ru.androidinvasion.secretbook.utils.toast
 
 class GenresscreenActivity : Activity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_genres_screen)
 
-        val genres = resources.getStringArray(R.array.genres)
+        var myResponse: List<Genre>? = null
+        var requestComplete = false
+
+        App.api.getData().enqueue(object : Callback<List<Genre>> {
+
+            override fun onResponse(call: Call<List<Genre>>, response: Response<List<Genre>>) {
+                myResponse = response.body()
+                requestComplete = true
+            }
+
+            override fun onFailure(call: Call<List<Genre>>, t: Throwable) {
+                requestComplete = true
+            }
+        })
+//        val genres = resources.getStringArray(R.array.genres)
+        while (!requestComplete) { }
+        if (myResponse == null) return
+        val genres = myResponse!!.map { it -> it.name }
         val colors = resources.obtainTypedArray(R.array.colors)
-//    val images = resources.obtainTypedArray(R.array.images)
 
         picker.adapter = object: BubblePickerAdapter {
             override val totalCount = genres.size
