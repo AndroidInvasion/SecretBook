@@ -28,4 +28,7 @@
     <string name="intro_five_description">Украшайте свои профили в соцсетях понравившимися цитатами. Мы сделаем все красиво</string>
     <string name="intro_welcome">Добро пожаловать в secretbook!</string>
     <string name="intro_content_description">Изображение с описанием возможностей приложения</string>
+
+    <string name="genres_one_title">Жанр 1</string>
+    <string name="genres_two_title">Жанр 2</string>
 </resources>

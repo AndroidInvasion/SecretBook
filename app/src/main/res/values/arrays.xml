@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="genres">
+        <item>@string/genres_one_title</item>
+        <item>@string/genres_two_title</item>
+    </string-array>
+
+    <integer-array name="colors">
+        <item>@color/red</item>
+        <item>@color/blue</item>
+    </integer-array>
+
+    <integer-array name="images">
+    </integer-array>
+</resources>

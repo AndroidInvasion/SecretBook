@@ -97,6 +97,13 @@ dependencies {
         transitive = true
     }
     implementation 'me.relex:circleindicator:1.2.2@aar'
+
+    compile 'com.github.igalata:Bubble-Picker:v0.2.4'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0' //Конвертер JSON, можно, если предпочитаете, использовать Jackson
+//    compile 'com.android.support:recyclerview-v7:27.1.1' //RecyclerView
+
 }
 
 hockeyapp {
