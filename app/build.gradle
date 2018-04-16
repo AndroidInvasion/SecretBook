@@ -91,7 +91,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
 
-    implementation 'com.github.AndroidInvasion:YetAnotherReader:1.0.0'
+    implementation 'com.github.AndroidInvasion:YetAnotherReader:1.0.1'
 
     implementation("com.crashlytics.sdk.android:crashlytics:$crashalyticsVersion@aar") {
         transitive = true
@@ -105,6 +105,8 @@ hockeyapp {
         def keystoreProperties = new Properties()
         keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
+        releaseType = 2
+        status = 2
         apiToken = keystoreProperties['apiTokenHockey']
         notesType = 1
         notes = System.getenv('TRAVIS_COMMIT_MESSAGE') ?: new File(file('../README.md').absolutePath).getText('UTF-8')
