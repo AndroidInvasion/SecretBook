@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 import ru.androidinvasion.secretbook.R
-import ru.androidinvasion.secretbook.view.genresscreen.ui.GenresscreenActivity
+import ru.androidinvasion.secretbook.view.genresscreen.ui.GenresActivity
 
 class IntroActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     private val mAdapter = IntroAdapter(supportFragmentManager)
@@ -51,7 +51,7 @@ class IntroActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     }
 
     private fun openMainActivity() {
-        startActivity(Intent(this@IntroActivity, GenresscreenActivity::class.java))
+        startActivity(Intent(this@IntroActivity, GenresActivity::class.java))
     }
 
 }

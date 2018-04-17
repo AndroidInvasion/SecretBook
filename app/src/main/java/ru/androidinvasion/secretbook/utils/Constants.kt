@@ -14,7 +14,5 @@ object Constants {
     val LOGIN_PATTERN = Pattern.compile("([a-zA-Z0-9]+)")
     const val PASSWORD_MAX_LENGHT = 4
 
-    const val BACKEND_URL = "https://78.155.219.3/api/v1/"
-    const val API_VERSION = "v1/"
-    const val API_URL = BACKEND_URL + "api/" + API_VERSION
+    const val API_URL = "http://78.155.219.3:8080/v1/"
 }

@@ -7,10 +7,9 @@ import retrofit2.Retrofit
 import ru.androidinvasion.secretbook.di.app.AppComponent
 import ru.androidinvasion.secretbook.di.app.AppModule
 import ru.androidinvasion.secretbook.di.app.DaggerAppComponent
-import ru.androidinvasion.secretbook.utils.Api
+import ru.androidinvasion.secretbook.data.api.Api
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.androidinvasion.secretbook.utils.Constants.API_URL
-import ru.androidinvasion.secretbook.utils.Constants.BACKEND_URL
 
 
 /**
@@ -22,11 +21,7 @@ class App : Application() {
     companion object {
         @JvmStatic
         lateinit var appComponent: AppComponent
-
-        lateinit var api: Api
     }
-
-    private lateinit var retrofit: Retrofit
 
     override fun onCreate() {
         super.onCreate()
@@ -36,11 +31,6 @@ class App : Application() {
                 .appModule(AppModule(this))
                 .build()
 
-        retrofit = Retrofit.Builder()
-                .baseUrl(API_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-        api = retrofit.create(Api::class.java)
     }
 
 
