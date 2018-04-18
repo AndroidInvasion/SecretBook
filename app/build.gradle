@@ -96,7 +96,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
-    implementation 'com.github.AndroidInvasion:YetAnotherReader:1.0.0'
+    implementation 'com.github.AndroidInvasion:YetAnotherReader:1.0.1'
     implementation 'com.github.LionZXY:Bubble-Picker:852d7c47a3'
 
     implementation("com.crashlytics.sdk.android:crashlytics:$crashalyticsVersion@aar") {
