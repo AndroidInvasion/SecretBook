@@ -15,5 +15,5 @@ interface Api {
 
     @GET("books")
     fun getRandomBook(@Query("count") count: Int,
-                      @Query("tags") tags: IntArray): Single<List<Book>>
+                      @Query("tags") tags: String): Single<List<Book>>
 }

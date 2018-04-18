@@ -17,7 +17,7 @@ class ReaderRepository(retrofit: Retrofit) : IReaderRepository {
     var api = retrofit.create(Api::class.java)
 
     override fun getRandomBooks(genres: List<Genre>, size: Int): Single<List<Book>> {
-        return api.getRandomBook(size, genres.map { it.id }.toIntArray())
+        return api.getRandomBook(size, genres.map { it.id }.joinToString(","))
                 .subscribeOn(Schedulers.io())
     }
 
