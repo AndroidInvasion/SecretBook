@@ -35,6 +35,8 @@
             android:name=".view.intro.ui.IntroActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.genresscreen.ui.GenresActivity" />
+        <activity android:name=".view.main.ui.MainActivity" />
     </application>
 
 </manifest>

@@ -1,11 +1,12 @@
 package ru.androidinvasion.secretbook.view.intro.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 import ru.androidinvasion.secretbook.R
-import ru.androidinvasion.secretbook.utils.toast
+import ru.androidinvasion.secretbook.view.genresscreen.ui.GenresActivity
 
 class IntroActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     private val mAdapter = IntroAdapter(supportFragmentManager)
@@ -50,7 +51,7 @@ class IntroActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     }
 
     private fun openMainActivity() {
-        toast("Open!")
+        startActivity(Intent(this@IntroActivity, GenresActivity::class.java))
     }
 
 }

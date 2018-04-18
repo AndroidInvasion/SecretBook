@@ -6,6 +6,7 @@ import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.preference.PreferenceManager
 import ru.androidinvasion.secretbook.view.intro.ui.IntroActivity
+import ru.androidinvasion.secretbook.view.main.ui.MainActivity
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -22,9 +23,9 @@ class SplashScreenActivity : Activity() {
             val intent = Intent(this, IntroActivity::class.java)
             intent.flags = FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
-            //TODO(preference.edit().putBoolean("firstrun", false).apply())
         } else {
-            //TODO(do nothing, lol)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 
