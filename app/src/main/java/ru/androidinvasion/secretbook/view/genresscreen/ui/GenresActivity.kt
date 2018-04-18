@@ -14,7 +14,7 @@ import com.igalata.bubblepicker.rendering.BubblePicker
 import kotlinx.android.synthetic.main.activity_genres_screen.*
 import kotlinx.android.synthetic.main.view_genre.*
 import ru.androidinvasion.secretbook.R
-import ru.androidinvasion.secretbook.data.genresscreen.Genre
+import ru.androidinvasion.secretbook.data.api.Genre
 import ru.androidinvasion.secretbook.utils.toast
 import ru.androidinvasion.secretbook.view.genresscreen.presenter.GenresPresenter
 import ru.androidinvasion.secretbook.view.main.ui.MainActivity
@@ -26,6 +26,9 @@ import ru.androidinvasion.secretbook.view.main.ui.MainActivity
  */
 
 class GenresActivity : MvpAppCompatActivity(), GenresView, BubblePickerListener {
+    companion object {
+        const val BUBLE_SIZE = 20
+    }
     @InjectPresenter
     lateinit var presenter: GenresPresenter
     private var pickerView: BubblePicker? = null
@@ -41,7 +44,7 @@ class GenresActivity : MvpAppCompatActivity(), GenresView, BubblePickerListener 
         LayoutInflater.from(this).inflate(R.layout.view_genre, selectframe)
         pickerView = picker
         pickerView?.adapter = GenreAdapter(genres, this)
-        pickerView?.bubbleSize = 20
+        pickerView?.bubbleSize = BUBLE_SIZE
         if (isResuming) {
             pickerView?.onResume()
         }

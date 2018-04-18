@@ -1,13 +1,17 @@
 package ru.androidinvasion.secretbook.view.reader.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import ru.androidinvasion.secretbook.R
+import ru.androidinvasion.secretbook.utils.toast
 import ru.androidinvasion.secretbook.view.reader.presenter.ReaderPresenter
 import ru.lionzxy.yetanotherreaderlibrary.ReaderFragment
 import ru.lionzxy.yetanotherreaderlibrary.data.Book
+
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -42,11 +46,34 @@ class ReaderActivity : MvpAppCompatActivity(), IReaderView {
                     .commit()
         }
         fragment = tmpFragment
-
+        fragment.setNextListener { presenter.onNextClick() }
+        fragment.setBuyListener { presenter.onBuyClick() }
     }
 
     override fun setBook(book: Book) {
         fragment.setBook(book)
+    }
+
+    override fun setProgress(visible: Boolean) {
+        fragment.setProgressBarVisible(visible)
+    }
+
+    override fun notifyPresenterAboutAction() {
+        val action = intent.getStringExtra(EXTRA_ACTION)
+        val actionEnum = when (action) {
+            ACTION_RANDOM -> ReaderAction.RANDOM
+            else -> ReaderAction.RANDOM
+        }
+        presenter.openReader(actionEnum)
+    }
+
+    override fun openUrl(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
+    }
+
+    override fun showError(resId: Int) {
+        toast(resId)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
