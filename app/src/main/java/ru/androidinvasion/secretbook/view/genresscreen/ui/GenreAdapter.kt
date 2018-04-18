@@ -4,7 +4,7 @@ import android.content.Context
 import com.igalata.bubblepicker.adapter.BubblePickerAdapter
 import com.igalata.bubblepicker.model.PickerItem
 import ru.androidinvasion.secretbook.R
-import ru.androidinvasion.secretbook.data.genresscreen.Genre
+import ru.androidinvasion.secretbook.data.api.Genre
 import ru.androidinvasion.secretbook.utils.getColorOld
 
 /**

@@ -1,17 +1,17 @@
 package ru.androidinvasion.secretbook.view.genresscreen.presenter
 
 import android.content.SharedPreferences
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import ru.androidinvasion.secretbook.App
 import ru.androidinvasion.secretbook.R
-import ru.androidinvasion.secretbook.data.genresscreen.Genre
+import ru.androidinvasion.secretbook.data.api.Genre
 import ru.androidinvasion.secretbook.di.genres.GenresModule
 import ru.androidinvasion.secretbook.interactor.genres.IGenresInteractor
 import ru.androidinvasion.secretbook.view.genresscreen.ui.GenresView
+import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -23,6 +23,10 @@ import javax.inject.Inject
 
 @InjectViewState
 class GenresPresenter : MvpPresenter<GenresView>() {
+    companion object {
+        const val RETRY_COUNT = 3L
+    }
+
     @Inject
     lateinit var interactor: IGenresInteractor
     @Inject
@@ -41,14 +45,14 @@ class GenresPresenter : MvpPresenter<GenresView>() {
         displosable.addAll(interactor
                 .getAllGenres()
                 .observeOn(AndroidSchedulers.mainThread())
-                .retry(3)
+                .retry(RETRY_COUNT)
                 .subscribe({
                     viewState.setGenresList(it)
                     viewState.setProgress(false)
                 }, {
                     viewState.setProgress(false)
                     viewState.onError(R.string.genres_error)
-                    Log.e(GenresPresenter::class.java.simpleName, "Error while get genres", it)
+                    Timber.e(it)
                 }))
     }
 

@@ -96,7 +96,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
-    implementation 'com.github.AndroidInvasion:YetAnotherReader:1.0.1'
+    implementation 'com.jakewharton.timber:timber:4.7.0'
+
+    implementation 'com.github.AndroidInvasion:YetAnotherReader:1.0.3'
     implementation 'com.github.LionZXY:Bubble-Picker:852d7c47a3'
 
     implementation("com.crashlytics.sdk.android:crashlytics:$crashalyticsVersion@aar") {
@@ -112,6 +114,8 @@ hockeyapp {
         def keystoreProperties = new Properties()
         keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
+        releaseType = 2
+        status = 2
         apiToken = keystoreProperties['apiTokenHockey']
         notesType = 1
         notes = System.getenv('TRAVIS_COMMIT_MESSAGE') ?: new File(file('../README.md').absolutePath).getText('UTF-8')

@@ -3,7 +3,7 @@ package ru.androidinvasion.secretbook.view.genresscreen.ui
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import ru.androidinvasion.secretbook.data.genresscreen.Genre
+import ru.androidinvasion.secretbook.data.api.Genre
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>

@@ -1,4 +1,4 @@
-package ru.androidinvasion.secretbook.data.genresscreen
+package ru.androidinvasion.secretbook.data.api
 
 import com.google.gson.annotations.SerializedName
 
@@ -14,7 +14,7 @@ class Genre(@SerializedName("id")
             var name: String,
             var isSelected: Boolean = false) {
 
-    constructor() : this(0, "") {}
+    constructor() : this(0, "")
 
     constructor(line: String) : this() {
         val tmp = line.split(":")
