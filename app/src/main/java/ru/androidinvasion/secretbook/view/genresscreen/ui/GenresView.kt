@@ -2,7 +2,6 @@ package ru.androidinvasion.secretbook.view.genresscreen.ui
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
-import com.arellomobile.mvp.viewstate.strategy.SkipStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import ru.androidinvasion.secretbook.data.genresscreen.Genre
 
@@ -17,4 +16,5 @@ interface GenresView : MvpView {
     fun setGenresList(genres: List<Genre>)
     fun setProgress(visible: Boolean)
     fun onError(resId: Int)
+    fun openMainScreen()
 }

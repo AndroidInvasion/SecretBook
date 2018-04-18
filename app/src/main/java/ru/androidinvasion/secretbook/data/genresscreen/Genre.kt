@@ -3,8 +3,11 @@ package ru.androidinvasion.secretbook.data.genresscreen
 import com.google.gson.annotations.SerializedName
 
 /**
- * Created by egor on 15.04.18.
- */
+* @author Nikita Kulikov <nikita@kulikof.ru>
+* @project SecretBookNoSecure
+* @date 15.04.18
+*/
+
 class Genre(@SerializedName("id")
             var id: Int = 0,
             @SerializedName("name")
@@ -17,6 +20,17 @@ class Genre(@SerializedName("id")
         val tmp = line.split(":")
         id = Integer.valueOf(tmp[0])
         name = tmp[1]
+    }
+
+    override fun hashCode(): Int {
+        return id
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (other == null || other !is Genre) {
+            return false
+        }
+        return other.id == id
     }
 
     override fun toString(): String {

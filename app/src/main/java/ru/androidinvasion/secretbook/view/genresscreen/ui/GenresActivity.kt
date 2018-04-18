@@ -1,7 +1,10 @@
 package ru.androidinvasion.secretbook.view.genresscreen.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -14,6 +17,7 @@ import ru.androidinvasion.secretbook.R
 import ru.androidinvasion.secretbook.data.genresscreen.Genre
 import ru.androidinvasion.secretbook.utils.toast
 import ru.androidinvasion.secretbook.view.genresscreen.presenter.GenresPresenter
+import ru.androidinvasion.secretbook.view.main.ui.MainActivity
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -67,6 +71,26 @@ class GenresActivity : MvpAppCompatActivity(), GenresView, BubblePickerListener 
         if (data != null && data is Genre) {
             presenter.onGenreSelect(data)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.done, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when(item?.itemId){
+            R.id.menu_done -> {
+                presenter.finishSelect()
+                true
+            }
+            else -> false
+        }
+    }
+
+    override fun openMainScreen() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onError(resId: Int) {

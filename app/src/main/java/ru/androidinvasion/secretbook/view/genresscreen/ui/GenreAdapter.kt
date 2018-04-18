@@ -13,7 +13,7 @@ import ru.androidinvasion.secretbook.utils.getColorOld
  * @date 16.04.18
  */
 
-class GenreAdapter(var list: List<Genre>, var context: Context) : BubblePickerAdapter {
+class GenreAdapter(var list: List<Genre>, private var context: Context) : BubblePickerAdapter {
     override val totalCount: Int
         get() = list.size
 
