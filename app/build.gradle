@@ -1,15 +1,11 @@
 buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
+        mavenCentral()
     }
 
     dependencies {
-        // These docs use an open ended version so that our plugin
-        // can be updated quickly in response to Android tooling updates
-
-        // We recommend changing it to the latest version from our changelog:
-        // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
-        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'io.fabric.tools:gradle:1.25.2'
     }
 }
 
@@ -17,6 +13,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'de.felixschulze.gradle.hockeyapp'
 apply plugin: 'io.fabric'
 
 repositories {
@@ -24,40 +21,66 @@ repositories {
 }
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         applicationId "ru.androidinvasion.secretbook"
         minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 27
+        versionCode System.getenv('TRAVIS_BUILD_NUMBER') as Integer ?: 1
+        versionName "1.0." + versionCode
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
+    signingConfigs {
+        release {
+            try {
+                def keystorePropertiesFile = rootProject.file("deploy/unsecret/secret.properties")
+                def keystoreProperties = new Properties()
+                keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+                // this keystore is located at module level
+                storeFile file("../deploy/unsecret/deploy.jks")
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+
+                keyPassword keystoreProperties['keyPassword']
+            } catch (FileNotFoundException ignored) {
+                logger.warn('Not found secret file with keys! Build signing release is disabled')
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
         }
     }
 }
 
+
 ext {
+    betaDistributionEmails = "nikita@kulikof.ru"
+
     daggerVersion = '2.14.1'
     moxyVersion = '1.5.3'
     rxjavaVersion = '2.0.2'
-    supportVersion = '26.1.0'
+    supportVersion = '27.1.1'
     crashalyticsVersion = '2.9.1'
-    constrainLayoutVersion = '1.0.2'
+    constrainLayoutVersion = '1.1.0'
+    retrofitVersion = '2.4.0'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation "com.android.support:design:$supportVersion"
-    implementation "com.android.support.constraint:constraint-layout:$constrainLayoutVersion"
     implementation "com.android.support:support-vector-drawable:$supportVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constrainLayoutVersion"
 
     implementation "com.arello-mobile:moxy:$moxyVersion"
     implementation "com.arello-mobile:moxy-app-compat:$moxyVersion"
@@ -69,7 +92,56 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
 
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    implementation 'com.jakewharton.timber:timber:4.7.0'
+
+    //noinspection GradleDependency
+    implementation 'com.github.AndroidInvasion:YetAnotherReader:c8be89a6cb'
+
+
+
+    implementation 'com.github.LionZXY:Bubble-Picker:852d7c47a3'
+
     implementation("com.crashlytics.sdk.android:crashlytics:$crashalyticsVersion@aar") {
         transitive = true
+    }
+    implementation 'me.relex:circleindicator:1.2.2@aar'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
+}
+
+hockeyapp {
+    try {
+        def keystorePropertiesFile = rootProject.file("deploy/unsecret/secret.properties")
+        def keystoreProperties = new Properties()
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+        releaseType = 2
+        status = 2
+        apiToken = keystoreProperties['apiTokenHockey']
+        notesType = 1
+        notes = System.getenv('TRAVIS_COMMIT_MESSAGE') ?: new File(file('../README.md').absolutePath).getText('UTF-8')
+    } catch (FileNotFoundException ignored) {
+        logger.warn('Not found secret file with keys! Deploy is disabled.')
+    }
+}
+
+android {
+    lintOptions {
+        abortOnError true
+        warningsAsErrors false
+        quiet false
+        htmlReport true
+        disable 'UnusedResources'
+        xmlReport false
+        textReport true
+        explainIssues true
+        ignoreWarnings false
+        lintConfig file("lint.xml")
     }
 }

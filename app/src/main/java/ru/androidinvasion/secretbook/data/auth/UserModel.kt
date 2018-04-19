@@ -6,5 +6,4 @@ package ru.androidinvasion.secretbook.data.auth
  * @date 06.03.18
  */
 
-class UserModel(public val login: String, public val email: String) {
-}
+class UserModel(val login: String, val email: String)
