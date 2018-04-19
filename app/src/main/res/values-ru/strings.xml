@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Secret Book</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- Auth Activity -->
+    <string name="auth_activity_title">Авторизация</string>
+    <string name="auth_activity_button">Войти</string>
+    <string name="auth_activity_login_empty">Логин не может быть пустым</string>
+    <string name="auth_activity_login_matcher">Логин должен содержать только буквы латинского алфавита и цифры</string>
+    <string name="auth_activity_password_empty">Пароль не может быть пустым</string>
+    <string name="auth_activity_password_matcher">Пароль должен иметь минимум 4 символа</string>
+    <string name="intro_next">Далее</string>
+    <string name="intro_ready">Вперед!</string>
+    <string name="intro_back">Назад</string>
+    <string name="intro_skip">Пропустить</string>
+
+    <string name="intro_one_title">Secretbook – tinder для книг</string>
+    <string name="intro_one_description">Покупайте только те книги, которые вам понравилось читать</string>
+    <string name="intro_two_title">Просматривайте фрагменты</string>
+    <string name="intro_two_description">Больше 50 000 самых вкусных фрагменто и самых мудрых мыслей в одном месте</string>
+    <string name="intro_three_title">Открывайте интересные книги</string>
+    <string name="intro_three_description">Просматривайте информацию о книге только когда поймете, что читать ее будет действительно интересно</string>
+    <string name="intro_four_title">Покупайте дешевле</string>
+    <string name="intro_four_description">Мы собираем только лучшие предложения. А еще у нас есть акции и скидки специально для читателей secretbook</string>
+    <string name="intro_five_title">Делитесь с друзьями</string>
+    <string name="intro_five_description">Украшайте свои профили в соцсетях понравившимися цитатами. Мы сделаем все красиво</string>
+    <string name="intro_welcome">Добро пожаловать в secretbook!</string>
+    <string name="intro_content_description">Изображение с описанием возможностей приложения</string>
+
+    <string name="genres_error">Ошибка загрузки жанров. Кажется, с вашим интернет соединением что-то не так. Попробуйте позже</string>
+    <string name="genre_select">Выберите ваши любимые жанры :3</string>
+    <string name="main_random">Рандомная книга</string>
+
+    <string name="reader_error">Ошибка подключения. Кажется, с вашим интернет соединением что-то не так. Попробуйте позже</string>
+</resources>
