@@ -11,11 +11,11 @@ import ru.lionzxy.yetanotherreaderlibrary.data.Book
 
 class Book(var id: Int,
            var fragment: String,
-           @SerializedName("fragment_autor")
+           @SerializedName("fragment_author")
            var fragmentAuthor: Author,
            var name: String,
            var description: String,
-           @SerializedName("autor")
+           @SerializedName("author")
            var author: Array<Author>,
            var publisher: Author,
            var pages: Int,
