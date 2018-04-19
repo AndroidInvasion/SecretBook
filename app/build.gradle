@@ -99,7 +99,9 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.0'
 
     //noinspection GradleDependency
-    implementation 'com.github.AndroidInvasion:YetAnotherReader:245f27affd'
+    implementation 'com.github.AndroidInvasion:YetAnotherReader:c8be89a6cb'
+
+
 
     implementation 'com.github.LionZXY:Bubble-Picker:852d7c47a3'
 
@@ -107,6 +109,9 @@ dependencies {
         transitive = true
     }
     implementation 'me.relex:circleindicator:1.2.2@aar'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
 }
 

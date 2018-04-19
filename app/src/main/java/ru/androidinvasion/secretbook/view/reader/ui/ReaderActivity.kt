@@ -23,11 +23,11 @@ class ReaderActivity : MvpAppCompatActivity(), IReaderView {
 
     @InjectPresenter
     lateinit var presenter: ReaderPresenter
-    lateinit var fragment: ReaderFragment
+    private lateinit var fragment: ReaderFragment
 
     companion object {
-        val ACTION_RANDOM = "random"
-        val EXTRA_ACTION = "action"
+        const val ACTION_RANDOM = "random"
+        const val EXTRA_ACTION = "action"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

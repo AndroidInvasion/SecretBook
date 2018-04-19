@@ -5,35 +5,33 @@
     <string name="title_notifications">Notifications</string>
 
     <!-- Auth Activity -->
-    <string name="auth_activity_title">Авторизация</string>
-    <string name="auth_activity_button">Войти</string>
-    <string name="auth_activity_login_empty">Логин не может быть пустым</string>
-    <string name="auth_activity_login_matcher">Логин должен содержать только буквы латинского алфавита и цифры</string>
-    <string name="auth_activity_password_empty">Пароль не может быть пустым</string>
-    <string name="auth_activity_password_matcher">Пароль должен иметь минимум 4 символа</string>
-    <string name="intro_next">Далее</string>
-    <string name="intro_ready">Вперед!</string>
-    <string name="intro_back">Назад</string>
-    <string name="intro_skip">Пропустить</string>
+    <string name="auth_activity_title">Authorization</string>
+    <string name="auth_activity_button">Log In</string>
+    <string name="auth_activity_login_empty">Login can not be empty</string>
+    <string name="auth_activity_login_matcher">Login must contain only letters of the Latin alphabet and numbers</string>
+    <string name="auth_activity_password_empty">Password can not be empty</string>
+    <string name="auth_activity_password_matcher">The password must be at least 4 characters long</string>
+    <string name="intro_next">Next</string>
+    <string name="intro_ready">Go!</string>
+    <string name="intro_back">Back</string>
+    <string name="intro_skip">Skip</string>
 
-    <string name="intro_one_title">Secretbook – tinder для книг</string>
-    <string name="intro_one_description">Покупайте только те книги, которые вам понравилось читать</string>
-    <string name="intro_two_title">Просматривайте фрагменты</string>
-    <string name="intro_two_description">Больше 50 000 самых вкусных фрагменто и самых мудрых мыслей в одном месте</string>
-    <string name="intro_three_title">Открывайте интересные книги</string>
-    <string name="intro_three_description">Просматривайте информацию о книге только когда поймете, что читать ее будет действительно интересно</string>
-    <string name="intro_four_title">Покупайте дешевле</string>
-    <string name="intro_four_description">Мы собираем только лучшие предложения. А еще у нас есть акции и скидки специально для читателей secretbook</string>
-    <string name="intro_five_title">Делитесь с друзьями</string>
-    <string name="intro_five_description">Украшайте свои профили в соцсетях понравившимися цитатами. Мы сделаем все красиво</string>
-    <string name="intro_welcome">Добро пожаловать в secretbook!</string>
-    <string name="intro_content_description">Изображение с описанием возможностей приложения</string>
+    <string name="intro_one_title">Secretbook – tinder for book</string>
+    <string name="intro_one_description">Buy only those books that you liked to read</string>
+    <string name="intro_two_title">Browse snippets</string>
+    <string name="intro_two_description">More than 50 000 of the most delicious fragments and the wisest thoughts in one place</string>
+    <string name="intro_three_title">Discover interesting books</string>
+    <string name="intro_three_description">View information about the book only when you realize that reading it will be really interesting</string>
+    <string name="intro_four_title">Buy cheaper</string>
+    <string name="intro_four_description">We collect only the best offers. And we also have promotions and discounts specially for readers of the secretbook</string>
+    <string name="intro_five_title">Share with friends</string>
+    <string name="intro_five_description">Decorate your profiles in social networks like quotes. We will do everything beautifully</string>
+    <string name="intro_welcome">Welcome to the secretbook!</string>
+    <string name="intro_content_description">Image describing the features of the application</string>
 
-    <string name="genres_one_title">Жанр 1</string>
-    <string name="genres_two_title">Жанр 2</string>
-    <string name="genres_error">Ошибка загрузки жанров. Кажется, с вашим интернет соединением что-то не так. Попробуйте позже</string>
-    <string name="genre_select">Выберите ваши любимые жанры :3</string>
-    <string name="main_random">Рандомная книга</string>
+    <string name="genres_error">Error loading genres. It seems that something is wrong with your internet connection. try later</string>
+    <string name="genre_select">Select your favorite genres: 3</string>
+    <string name="main_random">Random book</string>
 
-    <string name="reader_error">Ошибка подключения. Кажется, с вашим интернет соединением что-то не так. Попробуйте позже</string>
+    <string name="reader_error">Connection error. It seems that something is wrong with your internet connection. try later</string>
 </resources>

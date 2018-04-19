@@ -1,6 +1,5 @@
 package ru.androidinvasion.secretbook.repositories.reader
 
-import io.reactivex.Observable
 import io.reactivex.Single
 import ru.androidinvasion.secretbook.data.api.Book
 import ru.androidinvasion.secretbook.data.api.Genre

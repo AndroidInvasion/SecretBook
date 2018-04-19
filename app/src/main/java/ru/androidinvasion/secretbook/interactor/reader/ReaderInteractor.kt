@@ -11,7 +11,8 @@ import ru.androidinvasion.secretbook.repositories.reader.IReaderRepository
  * @date 18.04.18
  */
 
-class ReaderInteractor(val repository: IReaderRepository, val genresRepo: IGenresRepository) : IReaderInteractor {
+class ReaderInteractor(private val repository: IReaderRepository,
+                       private val genresRepo: IGenresRepository) : IReaderInteractor {
     override fun getRandomBook(): Single<Book> {
         return repository
                 .getRandomBooks(genresRepo.getMyGenres())
