@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 
 class AuthRepository(private val sharedPreferences: SharedPreferences) : IAuthRepository {
     override fun getToken(): String? {
-        val token = sharedPreferences.getString("auth_token", "")
+        val token = sharedPreferences.getString(UserModel.EXTRA_AUTHTOKEN, "")
 
         return if (token.isNullOrEmpty()) {
             null
@@ -22,7 +22,7 @@ class AuthRepository(private val sharedPreferences: SharedPreferences) : IAuthRe
     }
 
     private fun putToken(token: String) {
-        sharedPreferences.getString("auth_token", token)
+        sharedPreferences.getString(UserModel.EXTRA_AUTHTOKEN, token)
     }
 
     override fun login(login: String, password: String): Single<UserModel> {

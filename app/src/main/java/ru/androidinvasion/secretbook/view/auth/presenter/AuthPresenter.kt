@@ -39,7 +39,7 @@ class AuthPresenter : MvpPresenter<IAuthView>() {
                 .subscribe({
                     viewState.onLoading(false)
                 }, {
-                    viewState.onError("TODO ME")
+                    viewState.onError("TODO ME") // TODO
                 }))
     }
 

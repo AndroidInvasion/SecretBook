@@ -13,6 +13,8 @@ object Constants {
     @Language("RegExp")
     val LOGIN_PATTERN: Pattern = Pattern.compile("([a-zA-Z0-9]+)")
     const val PASSWORD_MAX_LENGHT = 4
+    const val EXTRA_FIRSTRUN = "firstrun"
+    const val EXTRA_INTROENUM = "introenum"
 
     const val API_URL = "http://78.155.219.3:8080/v1/"
 }

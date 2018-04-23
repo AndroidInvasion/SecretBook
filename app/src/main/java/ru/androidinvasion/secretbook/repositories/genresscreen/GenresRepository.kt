@@ -21,12 +21,12 @@ class GenresRepository(private val sharedPreferences: SharedPreferences, retrofi
     }
 
     override fun getMyGenres(): List<Genre> {
-        return sharedPreferences.getStringSet("genres", emptySet()).toList().map { Genre(it) }
+        return sharedPreferences.getStringSet(Genre.EXTRA_GENRE_SET, emptySet()).toList().map { Genre(it) }
     }
 
     override fun setMyGenres(list: List<Genre>): Completable {
         return Completable.fromCallable {
-            sharedPreferences.edit().putStringSet("genres", list.map { it.toString() }.toMutableSet()).apply()
+            sharedPreferences.edit().putStringSet(Genre.EXTRA_GENRE_SET, list.map { it.toString() }.toMutableSet()).apply()
         }.subscribeOn(Schedulers.io())
     }
 }

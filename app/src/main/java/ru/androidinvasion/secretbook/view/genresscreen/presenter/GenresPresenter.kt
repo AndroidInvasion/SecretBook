@@ -10,6 +10,7 @@ import ru.androidinvasion.secretbook.R
 import ru.androidinvasion.secretbook.data.api.Genre
 import ru.androidinvasion.secretbook.di.genres.GenresModule
 import ru.androidinvasion.secretbook.interactor.genres.IGenresInteractor
+import ru.androidinvasion.secretbook.utils.Constants
 import ru.androidinvasion.secretbook.view.genresscreen.ui.GenresView
 import timber.log.Timber
 import java.util.*
@@ -72,7 +73,7 @@ class GenresPresenter : MvpPresenter<GenresView>() {
     private fun openMainScreen() {
         viewState.openMainScreen()
         viewState.setProgress(false)
-        preferences.edit().putBoolean("firstrun", false).apply()
+        preferences.edit().putBoolean(Constants.EXTRA_FIRSTRUN, false).apply()
     }
 
     fun onGenreSelect(genre: Genre) {

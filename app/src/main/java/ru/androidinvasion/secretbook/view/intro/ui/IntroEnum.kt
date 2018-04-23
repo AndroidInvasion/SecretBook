@@ -14,5 +14,4 @@ enum class IntroEnum(val imageRes: Int, val title: Int, val description: Int) {
     THREE(R.drawable.intro_three, R.string.intro_three_title, R.string.intro_three_description),
     FOUR(R.drawable.intro_four, R.string.intro_four_title, R.string.intro_four_description),
     FIVE(R.drawable.intro_five, R.string.intro_five_title, R.string.intro_five_description)
-
 }

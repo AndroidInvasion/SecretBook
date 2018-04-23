@@ -36,4 +36,8 @@ class Genre(@SerializedName("id")
     override fun toString(): String {
         return "$id:$name"
     }
+
+    companion object {
+        const val EXTRA_GENRE_SET = "genres"
+    }
 }

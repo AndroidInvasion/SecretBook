@@ -20,6 +20,7 @@
             android:label="@string/auth_activity_title" />
 
         <activity android:name=".view.splashscreen.ui.SplashScreenActivity"
+            android:noHistory="true"
             android:theme="@style/AppTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

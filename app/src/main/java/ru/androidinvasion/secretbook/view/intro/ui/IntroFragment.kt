@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_intro.*
 import ru.androidinvasion.secretbook.R
+import ru.androidinvasion.secretbook.utils.Constants
 
 class IntroFragment : Fragment() {
     private var data: IntroEnum? = null
@@ -16,7 +17,7 @@ class IntroFragment : Fragment() {
             val fragment = IntroFragment()
 
             val args = Bundle()
-            args.putSerializable("data", data)
+            args.putSerializable(Constants.EXTRA_INTROENUM, data)
             fragment.arguments = args
 
             return fragment
@@ -25,7 +26,7 @@ class IntroFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        data = arguments?.getSerializable("data") as IntroEnum?
+        data = arguments?.getSerializable(Constants.EXTRA_INTROENUM) as IntroEnum?
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

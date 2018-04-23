@@ -21,16 +21,6 @@ fun Context.toast(text: String) {
     Toast.makeText(this, text, Toast.LENGTH_LONG).show()
 }
 
-@ColorInt
-@Suppress("DEPRECATION")
-fun Context.getColorOld(@ColorRes resId: Int): Int {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        this.resources.getColor(resId, this.theme)
-    } else {
-        this.resources.getColor(resId)
-    }
-}
-
 val Float.dp: Float
     get() = (this / Resources.getSystem().displayMetrics.density)
 val Float.px: Float

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.preference.PreferenceManager
+import ru.androidinvasion.secretbook.utils.Constants
 import ru.androidinvasion.secretbook.view.intro.ui.IntroActivity
 import ru.androidinvasion.secretbook.view.main.ui.MainActivity
 
@@ -19,7 +20,7 @@ class SplashScreenActivity : Activity() {
         super.onCreate(savedInstanceState)
 
         val preference = PreferenceManager.getDefaultSharedPreferences(this)
-        if (preference.getBoolean("firstrun", true)) {
+        if (preference.getBoolean(Constants.EXTRA_FIRSTRUN, true)) {
             val intent = Intent(this, IntroActivity::class.java)
             intent.flags = FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
