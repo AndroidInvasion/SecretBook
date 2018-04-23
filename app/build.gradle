@@ -99,7 +99,8 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.0'
 
     //noinspection GradleDependency
-    implementation 'com.github.AndroidInvasion:YetAnotherReader:c8be89a6cb'
+    implementation 'com.github.AndroidInvasion:YetAnotherReader:-SNAPSHOT'
+
 
     implementation 'com.github.LionZXY:Bubble-Picker:852d7c47a3'
 

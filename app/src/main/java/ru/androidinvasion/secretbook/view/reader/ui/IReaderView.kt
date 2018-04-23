@@ -4,7 +4,7 @@ import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import ru.androidinvasion.secretbook.data.api.Book
+import ru.lionzxy.yetanotherreaderlibrary.data.Book
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
