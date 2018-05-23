@@ -34,4 +34,5 @@
     <string name="main_random">Random book</string>
 
     <string name="reader_error">Connection error. It seems that something is wrong with your internet connection. try later</string>
+    <string name="main_reading_history">Reading history:</string>
 </resources>

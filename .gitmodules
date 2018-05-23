@@ -1,0 +1,3 @@
+[submodule "CircleIndicator"]
+    path = CircleIndicator
+    url = git://github.com/ongakuer/CircleIndicator.git

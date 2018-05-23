@@ -72,6 +72,8 @@ ext {
     crashalyticsVersion = '2.9.1'
     constrainLayoutVersion = '1.1.0'
     retrofitVersion = '2.4.0'
+    recyclerViewVersion = '27.1.1'
+    androidChipsVersion = '0.3.1'
 }
 
 dependencies {
@@ -81,6 +83,8 @@ dependencies {
     implementation "com.android.support:design:$supportVersion"
     implementation "com.android.support:support-vector-drawable:$supportVersion"
     implementation "com.android.support.constraint:constraint-layout:$constrainLayoutVersion"
+    implementation "com.android.support:recyclerview-v7:$recyclerViewVersion"
+    implementation "com.tengio.android:chips:$androidChipsVersion"
 
     implementation "com.arello-mobile:moxy:$moxyVersion"
     implementation "com.arello-mobile:moxy-app-compat:$moxyVersion"
