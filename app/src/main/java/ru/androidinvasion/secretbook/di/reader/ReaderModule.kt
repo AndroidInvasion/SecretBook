@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
-import ru.androidinvasion.secretbook.di.main.MainScope
 import ru.androidinvasion.secretbook.interactor.reader.IReaderInteractor
 import ru.androidinvasion.secretbook.interactor.reader.ReaderInteractor
 import ru.androidinvasion.secretbook.repositories.genresscreen.GenresRepository
@@ -24,7 +23,7 @@ import ru.androidinvasion.secretbook.repositories.readinghistory.ReadingHistoryR
 @ReaderScope
 class ReaderModule {
     @Provides
-    @MainScope
+    @ReaderScope
     fun provideReadingHistoryRepo(sharedPreferences: SharedPreferences): IReadingHistoryRepository {
         return ReadingHistoryRepository(sharedPreferences)
     }
