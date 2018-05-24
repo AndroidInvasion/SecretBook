@@ -17,7 +17,8 @@ class ReadingHistoryRepository(private val sharedPreferences: SharedPreferences)
 
     override fun addReadedBook(book: Book) {
         val index = sharedPreferences.getInt(INDEX_KEY, 0)
-        sharedPreferences.edit().putString(KEY_PREFIX + index.toString(), book.name).apply()
+        sharedPreferences.edit().putString(KEY_PREFIX + index.toString(), book.name)
+                .putInt(INDEX_KEY, index + 1).apply()
     }
 
     override fun getReadingHistory(): List<Book> {

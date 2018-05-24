@@ -3,19 +3,15 @@ package ru.androidinvasion.secretbook.view.main.ui
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.View
 import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.androidinvasion.secretbook.R
+import ru.androidinvasion.secretbook.data.api.Book
 import ru.androidinvasion.secretbook.data.api.Genre
 import ru.androidinvasion.secretbook.view.main.presenter.MainPresenter
 import ru.androidinvasion.secretbook.view.reader.ui.ReaderActivity
-import com.tengio.android.chips.Chip
-import com.tengio.android.chips.OnChipRemovedListener
-import ru.androidinvasion.secretbook.data.api.Book
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -32,6 +28,20 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        randombook.setOnClickListener { presenter.onClickRandomBook() }
+        /*selected_genres.setOnChipRemovedListener(object : OnChipRemovedListener {
+            override fun shouldRemove(position: Int, chip: Chip?, chipView: View?): Boolean {
+                return true
+            }
+            override fun onRemoved(chip: Chip) {
+                presenter.onGenreDelete(Genre(name=chip.label))
+            }
+        })*/
+    }
+
+    override fun onStart() {
+        super.onStart()
         val viewManager = LinearLayoutManager(this)
         val history: List<Book> = presenter.getHistory()
         val viewAdapter = ReadingHistoryAdapter(history.map { book -> book.name })
@@ -40,20 +50,10 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             layoutManager = viewManager
             adapter = viewAdapter
         }
-
-        randombook.setOnClickListener { presenter.onClickRandomBook() }
-        selected_genres.setOnChipRemovedListener(object : OnChipRemovedListener {
-            override fun shouldRemove(position: Int, chip: Chip?, chipView: View?): Boolean {
-                return true
-            }
-            override fun onRemoved(chip: Chip) {
-                presenter.onGenreDelete(Genre(name=chip.label))
-            }
-        })
     }
 
     override fun setSelectedGenres(selectedGenres: HashSet<Genre>) {
-        selected_genres.setItems(selectedGenres.map { genre -> GenreChip(genre.name) })
+        //selected_genres.setItems(selectedGenres.map { genre -> GenreChip(genre.name) })
     }
 
     override fun onError(error_id: Int) {
@@ -65,7 +65,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         intent.putExtra(ReaderActivity.EXTRA_ACTION, ReaderActivity.ACTION_RANDOM)
         startActivity(intent)
     }
-
+    /*
     private class GenreChip(var name: String) : Chip {
         override fun canDelete(): Boolean {
             return true
@@ -73,5 +73,5 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         override fun getLabel(): String {
             return name
         }
-    }
+    }*/
 }

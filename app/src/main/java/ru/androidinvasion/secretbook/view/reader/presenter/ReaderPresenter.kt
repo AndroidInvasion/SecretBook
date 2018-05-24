@@ -59,6 +59,7 @@ class ReaderPresenter : MvpPresenter<IReaderView>() {
         disposable.addAll(interactor.getRandomBook().observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     viewState.setBook(it.toReaderBook())
+                    interactor.onBookReaded(it)
                     currentBook = it
                     viewState.setProgress(false)
                 }, {

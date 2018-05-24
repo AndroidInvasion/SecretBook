@@ -37,11 +37,12 @@ class MainPresenter : MvpPresenter<MainView>() {
                 .retry(GenresPresenter.RETRY_COUNT)
                 .subscribe({
                     selectedGenres = HashSet(it)
+                    viewState.setSelectedGenres(selectedGenres)
                 }, {
                     selectedGenres = HashSet()
+                    viewState.setSelectedGenres(selectedGenres)
                     viewState.onError(R.string.genres_error)
                 })
-        viewState.setSelectedGenres(selectedGenres)
     }
 
     fun onGenreSelect(genre: Genre) {

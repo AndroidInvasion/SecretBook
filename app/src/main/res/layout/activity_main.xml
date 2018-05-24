@@ -29,11 +29,11 @@
             android:layout_weight="1"
             tools:listitem="@layout/reading_history_item"
             android:scrollbars="vertical"/>
-
+        <!--
         <com.tengio.android.chips.ChipsView
             android:id="@+id/selected_genres"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" /> -->
     </LinearLayout>
 
     <LinearLayout

@@ -36,18 +36,6 @@ class App : Application() {
         appComponent = DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .build()
-
-        if (BuildConfig.DEBUG) {
-            StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build())
-            StrictMode.setVmPolicy(StrictMode.VmPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .penaltyDeath()
-                    .build())
-        }
     }
 
 
