@@ -4,12 +4,15 @@ import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import ru.androidinvasion.secretbook.di.main.MainScope
 import ru.androidinvasion.secretbook.interactor.reader.IReaderInteractor
 import ru.androidinvasion.secretbook.interactor.reader.ReaderInteractor
 import ru.androidinvasion.secretbook.repositories.genresscreen.GenresRepository
 import ru.androidinvasion.secretbook.repositories.genresscreen.IGenresRepository
 import ru.androidinvasion.secretbook.repositories.reader.IReaderRepository
 import ru.androidinvasion.secretbook.repositories.reader.ReaderRepository
+import ru.androidinvasion.secretbook.repositories.readinghistory.IReadingHistoryRepository
+import ru.androidinvasion.secretbook.repositories.readinghistory.ReadingHistoryRepository
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -20,6 +23,11 @@ import ru.androidinvasion.secretbook.repositories.reader.ReaderRepository
 @Module
 @ReaderScope
 class ReaderModule {
+    @Provides
+    @MainScope
+    fun provideReadingHistoryRepo(sharedPreferences: SharedPreferences): IReadingHistoryRepository {
+        return ReadingHistoryRepository(sharedPreferences)
+    }
 
     @Provides
     @ReaderScope
@@ -35,7 +43,8 @@ class ReaderModule {
 
     @Provides
     @ReaderScope
-    fun provideInteractor(readerRepo: IReaderRepository, genresRepo: IGenresRepository): IReaderInteractor {
-        return ReaderInteractor(readerRepo, genresRepo)
+    fun provideInteractor(readerRepo: IReaderRepository, readingHistoryRepo: IReadingHistoryRepository,
+                          genresRepo: IGenresRepository): IReaderInteractor {
+        return ReaderInteractor(readerRepo, readingHistoryRepo, genresRepo)
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -13,6 +14,7 @@ import ru.androidinvasion.secretbook.data.api.Genre
 import ru.androidinvasion.secretbook.view.main.presenter.MainPresenter
 import ru.androidinvasion.secretbook.view.reader.ui.ReaderActivity
 import com.tengio.android.chips.Chip
+import com.tengio.android.chips.OnChipRemovedListener
 import ru.androidinvasion.secretbook.data.api.Book
 
 /**
@@ -25,33 +27,29 @@ import ru.androidinvasion.secretbook.data.api.Book
 class MainActivity : MvpAppCompatActivity(), MainView {
     @InjectPresenter
     lateinit var presenter: MainPresenter
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewManager = LinearLayoutManager(this)
-
+        val viewManager = LinearLayoutManager(this)
         val history: List<Book> = presenter.getHistory()
-        viewAdapter = ReadingHistoryAdapter(history.map { book -> book.name })
+        val viewAdapter = ReadingHistoryAdapter(history.map { book -> book.name })
 
-        recyclerView = reading_history.apply {
+        reading_history.apply {
             layoutManager = viewManager
             adapter = viewAdapter
         }
 
         randombook.setOnClickListener { presenter.onClickRandomBook() }
-//        selected_genres.setOnChipRemovedListener(object : OnChipRemovedListener {
-//            override fun shouldRemove(position: Int, chip: Chip?, chipView: View?): Boolean {
-//                return true
-//            }
-//            override fun onRemoved(chip: Chip) {
-//                presenter.onGenreDelete(Genre(name=chip.label))
-//            }
-//        })
+        selected_genres.setOnChipRemovedListener(object : OnChipRemovedListener {
+            override fun shouldRemove(position: Int, chip: Chip?, chipView: View?): Boolean {
+                return true
+            }
+            override fun onRemoved(chip: Chip) {
+                presenter.onGenreDelete(Genre(name=chip.label))
+            }
+        })
     }
 
     override fun setSelectedGenres(selectedGenres: HashSet<Genre>) {

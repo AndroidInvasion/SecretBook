@@ -1,10 +1,13 @@
 package ru.androidinvasion.secretbook.view.main.presenter
 
+import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
+import ru.androidinvasion.secretbook.App
 import ru.androidinvasion.secretbook.R
 import ru.androidinvasion.secretbook.data.api.*
-import ru.androidinvasion.secretbook.interactor.genres.IGenresInteractor
+import ru.androidinvasion.secretbook.di.main.MainModule
+import ru.androidinvasion.secretbook.interactor.main.IMainInteractor
 import ru.androidinvasion.secretbook.view.genresscreen.presenter.GenresPresenter
 import ru.androidinvasion.secretbook.view.main.ui.MainView
 import javax.inject.Inject
@@ -16,15 +19,20 @@ import javax.inject.Inject
  * @date 23.05.18
  */
 
+@InjectViewState
 class MainPresenter : MvpPresenter<MainView>() {
     @Inject
-    lateinit var genresInteractor: IGenresInteractor
+    lateinit var interactor: IMainInteractor
     private lateinit var selectedGenres: HashSet<Genre>
+
+    init {
+        App.appComponent.plus(MainModule()).inject(this)
+    }
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
 
-        genresInteractor.getAllGenres()
+        interactor.getAllGenres()
                 .observeOn(AndroidSchedulers.mainThread())
                 .retry(GenresPresenter.RETRY_COUNT)
                 .subscribe({
@@ -47,13 +55,11 @@ class MainPresenter : MvpPresenter<MainView>() {
     }
 
     fun onClickRandomBook() {
-        genresInteractor.setMyGenres(ArrayList(selectedGenres))
+        interactor.setMyGenres(ArrayList(selectedGenres))
         viewState.openReader()
     }
 
     fun getHistory(): List<Book> {
-        return listOf(Book(0, "", Author(), "myBook", "",
-                emptyArray<Author>(), Author(), 0, "",
-                emptyArray<Store>(), emptyArray<Genre>(), emptyArray<Library>(), 2018))
+        return interactor.getReadingHistory()
     }
 }

@@ -11,4 +11,5 @@ import ru.androidinvasion.secretbook.data.api.Book
 
 interface IReaderInteractor {
     fun getRandomBook(): Single<Book>
+    fun onBookReaded(book: Book)
 }
